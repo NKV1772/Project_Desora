@@ -1,0 +1,115 @@
+/* src/styles/layout.css */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw; /* THÊM DÒNG NÀY: Ép chiều rộng full màn hình */
+  max-width: 100%; /* Đảm bảo không bị giới hạn */
+  font-family: 'Inter', sans-serif;
+  overflow: hidden; /* Chặn scroll của cả trang web */
+}
+
+/* --- TOP HEADER --- */
+.top-header {
+  height: 70px;
+  background-color: #F3DBFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  position: relative; 
+  z-index: 10;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 260px; /* Khớp độ rộng với Sidebar */
+}
+
+.logo-area {
+  font-weight: 800;
+  font-size: 20px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+/* Thanh tìm kiếm (Search bar) */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: transparent; /* Nền trong suốt hoặc trắng tùy ý */
+  padding: 8px 12px;
+  border-radius: 8px;
+  flex: 1; /* Để nó nằm giữa */
+  max-width: 400px;
+  margin-right: auto; /*Đẩy toàn bộ khoảng trống còn dư sang bên phải*/
+  margin-left: 20px; /*Khoảng cách với logo*/
+}
+
+.search-icon {
+  color: #888;
+  margin-right: 10px;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Icon & Avatar bên phải */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.user-avatar img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- MAIN BODY --- */
+.main-body {
+  display: flex;      /* Để Sidebar và Content nằm ngang hàng */
+  flex: 1;            /* Chiếm hết phần chiều cao còn lại sau header */
+  overflow: hidden;   /* Ẩn thanh cuộn của body chính, chỉ cho phép scroll trong .page-content */
+  height: calc(100vh - 70px); /* Chiều cao bằng màn hình trừ header */
+}
+
+.page-content {
+  flex: 1;
+  background-color: #F8F0FC; /* Nền tím nhạt đồng bộ */
+  overflow-y: auto; /* Chỉ scroll phần nội dung này */
+  padding: 0;
+
+  /* Tùy chỉnh giao diện thanh cuộn (tùy chọn) */
+  scrollbar-width: thin; /* Cho Firefox */
+  scrollbar-color: #888 #F8F0FC; /* Màu thanh cuộn và nền cho Firefox */
+}
