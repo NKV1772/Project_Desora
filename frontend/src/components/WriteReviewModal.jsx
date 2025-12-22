@@ -2,15 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { FaStar, FaTimes } from 'react-icons/fa';
 
 const WriteReviewModal = ({ isOpen, onClose, product }) => {
-  // Reset lại form mỗi khi mở modal
+//   // Reset lại form mỗi khi mở modal
+//   useEffect(() => {
+//     if (isOpen) {
+//       setRating(0);
+//       setRatingDesigner(0);
+//       setRatingConsultant(0);
+//       setReviewText("");
+//     }
+//   }, [isOpen]);
+
   useEffect(() => {
-    if (isOpen) {
-      setRating(0);
-      setRatingDesigner(0);
-      setRatingConsultant(0);
-      setReviewText("");
+    if (isOpen && product) {
+      // KIỂM TRA: Nếu sản phẩm này ĐÃ được đánh giá (tức là đang Chỉnh sửa)
+      if (product.isReviewed) {
+        // -> Lấy dữ liệu cũ đổ vào form
+        setRating(product.rating || 0);                  // Sao chính
+        setRatingDesigner(product.ratingDesigner || 0);  // Sao designer
+        setRatingConsultant(product.ratingConsultant || 0); // Sao tư vấn
+        setReviewText(product.reviewText || "");         // Nội dung text
+      } else {
+        // -> Nếu chưa đánh giá (Viết mới) -> Reset về 0
+        setRating(0);
+        setRatingDesigner(0);
+        setRatingConsultant(0);
+        setReviewText("");
+      }
     }
-  }, [isOpen]);
+  }, [isOpen, product]);
 
   // 1. Khai báo các biến lưu trữ dữ liệu
   const [rating, setRating] = useState(0);             // Sao chất lượng sản phẩm
