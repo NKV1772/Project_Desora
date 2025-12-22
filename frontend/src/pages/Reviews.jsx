@@ -40,6 +40,18 @@ const Reviews = () => {
     setViewingReview(null);
   };
 
+  // --- THÊM HÀM XỬ LÝ CHUYỂN ĐỔI ---
+  const handleEditReview = () => {
+    // 1. Đóng Modal Xem
+    setIsViewModalOpen(false);
+    
+    // 2. Chuyển dữ liệu từ "đang xem" sang "đang chọn" để Modal Viết biết cần sửa cái nào
+    setSelectedProduct(viewingReview);
+    
+    // 3. Mở Modal Viết
+    setIsModalOpen(true);
+  };
+
   const reviewsData = [
     {
       id: 1,
@@ -102,6 +114,7 @@ const Reviews = () => {
         isOpen={isViewModalOpen}
         onClose={handleCloseViewModal}
         review={viewingReview}
+        onEdit={handleEditReview}
       />
     </div>
   );
