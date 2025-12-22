@@ -1,10 +1,29 @@
 import React, { useState } from 'react';
 import ReviewFilter from '../components/ReviewFilter';
 import ReviewItem from '../components/ReviewItem';
+import WriteReviewModal from '../components/WriteReviewModal';
 import '../styles/reviews.css';
 
 const Reviews = () => {
   const [filter, setFilter] = useState('all');
+
+  // 1. Khai báo state quản lý việc Mở/Đóng modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // 2. Khai báo state lưu sản phẩm đang được chọn để đánh giá
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // 3. Hàm mở modal (được gọi từ con ReviewItem)
+  const handleOpenModal = (product) => {
+    setSelectedProduct(product); // Lưu thông tin sản phẩm
+    setIsModalOpen(true);        // Bật modal lên
+  };
+
+  // 4. Hàm đóng modal (được gọi từ nút X hoặc nút Hủy)
+  const handleCloseModal = () => {
+    setIsModalOpen(false);       // Tắt modal
+    setSelectedProduct(null);    // Xóa sản phẩm đã chọn
+  };
 
   const reviewsData = [
     {
@@ -44,9 +63,16 @@ const Reviews = () => {
 
       <div className="reviews-list">
         {reviewsData.map((product) => (
-          <ReviewItem key={product.id} product={product} />
+          <ReviewItem key={product.id} product={product} onOpenModal={handleOpenModal}/>
         ))}
       </div>
+
+      {/*  */}
+      <WriteReviewModal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+        product={selectedProduct}
+      />
     </div>
   );
 };
