@@ -1,8 +1,7 @@
 import React from 'react';
-// Nếu bạn chưa cài icon, có thể dùng text hoặc cài: npm install react-icons
 // import { FaPen, FaEye } from 'react-icons/fa'; 
 
-const ReviewItem = ({ product }) => {
+const ReviewItem = ({ product, onOpenModal }) => {
   return (
     <div className="review-item">
       <div className="item-left">
@@ -20,8 +19,10 @@ const ReviewItem = ({ product }) => {
 
       <div className="item-right">
         {!product.isReviewed ? (
-          <button className="btn-action btn-primary">
-            {/* <FaPen size={12} /> Icon bút viết */
+          <button className="btn-action btn-primary"
+          onClick={() => onOpenModal(product)}
+          >
+            {
             <span>✎</span>}
             <span>Viết đánh giá</span>
           </button>
