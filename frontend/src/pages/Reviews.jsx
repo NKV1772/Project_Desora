@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReviewFilter from '../components/ReviewFilter';
 import ReviewItem from '../components/ReviewItem';
 import WriteReviewModal from '../components/WriteReviewModal';
+import ViewReviewModal from '../components/ViewReviewModal';
 import '../styles/reviews.css';
 
 const Reviews = () => {
@@ -25,6 +26,20 @@ const Reviews = () => {
     setSelectedProduct(null);    // Xóa sản phẩm đã chọn
   };
 
+  // --- BUTTON "XEM ĐÁNH GIÁ" ---
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [viewingReview, setViewingReview] = useState(null);
+
+  const handleOpenViewModal = (review) => {
+    setViewingReview(review);
+    setIsViewModalOpen(true);
+  };
+
+  const handleCloseViewModal = () => {
+    setIsViewModalOpen(false);
+    setViewingReview(null);
+  };
+
   const reviewsData = [
     {
       id: 1,
@@ -41,6 +56,12 @@ const Reviews = () => {
       date: '10/11, 2025',
       image: '/MerryChristmas.png',
       isReviewed: true, // Đã đánh giá -> Hiện nút Trắng
+      // Thêm dữ liệu giả để khi Xem đánh giá có cái mà hiện
+      rating: 4,
+      ratingConsultant: 5,
+      reviewText: "File bàn giao đầy đủ, đúng deadline. Chỉ mong lần sau có thêm gợi ý về màu sắc. ",
+      reviewerName: "Thanh Quyên",
+      reviewDate: "10/11, 2025"
     },
     {
       id: 3,
@@ -63,7 +84,10 @@ const Reviews = () => {
 
       <div className="reviews-list">
         {reviewsData.map((product) => (
-          <ReviewItem key={product.id} product={product} onOpenModal={handleOpenModal}/>
+          <ReviewItem key={product.id} 
+          product={product} 
+          onOpenModal={handleOpenModal}
+          onOpenViewModal={handleOpenViewModal}/>
         ))}
       </div>
 
@@ -72,6 +96,12 @@ const Reviews = () => {
         isOpen={isModalOpen} 
         onClose={handleCloseModal} 
         product={selectedProduct}
+      />
+
+      <ViewReviewModal 
+        isOpen={isViewModalOpen}
+        onClose={handleCloseViewModal}
+        review={viewingReview}
       />
     </div>
   );
