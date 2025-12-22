@@ -41,7 +41,7 @@ const WriteReviewModal = ({ isOpen, onClose, product }) => {
     }
 
     // Đánh giá sao hoặc viết nội dung
-    alert("Đánh giá của bạn đã được ghi nhận! Cảm ơn bạn.");
+    alert("Đánh giá của bạn đã được ghi nhận.");
     onClose();
   };
 
