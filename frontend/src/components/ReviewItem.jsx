@@ -1,7 +1,7 @@
 import React from 'react';
 // import { FaPen, FaEye } from 'react-icons/fa'; 
 
-const ReviewItem = ({ product, onOpenModal }) => {
+const ReviewItem = ({ product, onOpenModal, onOpenViewModal}) => {
   return (
     <div className="review-item">
       <div className="item-left">
@@ -20,14 +20,16 @@ const ReviewItem = ({ product, onOpenModal }) => {
       <div className="item-right">
         {!product.isReviewed ? (
           <button className="btn-action btn-primary"
-          onClick={() => onOpenModal(product)}
+            onClick={() => onOpenModal(product)}
           >
             {
             <span>✎</span>}
             <span>Viết đánh giá</span>
           </button>
         ) : (
-          <button className="btn-action btn-outline">
+          <button className="btn-action btn-outline" 
+            onClick={() => onOpenViewModal(product)}
+          >
             <span>Xem đánh giá</span>
           </button>
         )}
