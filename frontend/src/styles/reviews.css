@@ -120,8 +120,8 @@ button:focus {
 
 .btn-primary:hover {
   /* opacity: 0.9; */
-  background: #a0218f;
-  background: linear-gradient(90deg, #aa2cbf 0%, #a0218f 100%); 
+  background: #911f82;
+  background: linear-gradient(90deg, #aa2cbf 0%, #911f82 100%); 
 }
 
 /* Nút Xem đánh giá (Outline) */
@@ -189,7 +189,7 @@ button:focus {
   background: #ffffff;
   border-radius: 16px;
   padding: 20px 25px;
-  margin-bottom: 20px; /* Khoảng cách giữa 2 khối trắng */
+  margin-bottom: 10px; /* Khoảng cách giữa 2 khối trắng */
   box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* Bóng nhẹ */
 }
 
@@ -241,7 +241,11 @@ button:focus {
   flex-direction: column;
   align-items: center; /* Căn giữa nội dung form */
 }
-.section-title { font-weight: 700; font-size: 18px; margin-bottom: 15px; }
+.section-title { 
+    font-weight: 700; 
+    font-size: 18px; 
+    margin-bottom: 15px; 
+}
 
 /* Các phần tử bên trong Form */
 .star-rating { 
@@ -275,12 +279,27 @@ button:focus {
     color: #fbc02d; 
 }
 
-.modal-tags { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; justify-content: center; }
-.tag-btn {
-  background: #fff; border: 1px solid #e0e0e0; padding: 8px 16px; border-radius: 20px;
-  font-size: 14px; color: #555; cursor: pointer;
+.modal-tags { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 25px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
 }
-.tag-btn:hover { border-color: #aaa; background: #f9f9f9; }
+
+.tag-btn {
+  background: #fff; 
+  border: 1px solid #e0e0e0; 
+  padding: 8px 16px; 
+  border-radius: 20px;
+  font-size: 14px; 
+  color: #555; 
+  cursor: pointer;
+}
+.tag-btn:hover { 
+    border-color: #aaa; 
+    background: #f9f9f9; 
+}
 
 .modal-input-area { 
     width: 100%; 
@@ -327,8 +346,8 @@ button:focus {
 .service-row span {
   font-size: 14px;
   color: #333;
-  width: 180px;   /* <--- Quan trọng: Đặt độ rộng cố định cho nhãn */
-  flex-shrink: 0; /* Đảm bảo chữ không bị co lại nếu màn hình nhỏ */
+  width: 180px;   
+  flex-shrink: 0; 
 }
 
 
@@ -350,3 +369,174 @@ button:focus {
 }
 
 .submit-review-btn:hover { background-color: #eecaf9; }
+
+
+/* --- OVERLAY CỦA XEM ĐÁNH GIÁ --- */
+
+/* 1. Container chung: Bo tròn to, nền trắng */
+.view-modal-container {
+    width: 680px;
+    max-width: 95%;
+    background-color: #fff;
+    border-radius: 20px; /* Bo góc to như hình */
+    padding: 30px;      /* Padding đều 4 phía */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* 2. Header: Chữ to, đậm, không có viền dưới */
+.view-modal-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: #000;
+}
+
+
+
+/* 3. Phần Sản phẩm (Ảnh - Tin - Nút) */
+.vm-product-row {
+    display: flex;
+    justify-content: space-between; /* Đẩy nút Chỉnh sửa sang phải */
+    align-items: flex-start;
+}
+
+.vm-prod-left {
+    display: flex;
+    gap: 15px;
+}
+
+.vm-prod-img {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.vm-prod-info h3 {
+    font-size: 15px;
+    font-weight: 200;
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.vm-gray-text {
+    color: #999;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+}
+
+.vm-price {
+    font-weight: 300;
+    font-size: 15px;
+    color: #000; 
+    margin: 0;
+}
+
+/* 4. Button Outline Đỏ (Dùng chung cho Chỉnh sửa & OK) */
+.btn-red-outline {
+    background: #fff;
+    border: 1px solid #ffb3b3;
+    color: #ff5252;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    height: fit-content;
+}
+.btn-red-outline:hover {
+    background: #fff0f0;
+    border-color: #ff5252;
+}
+
+/* 5. Đường kẻ chia cắt */
+.vm-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 20px 0;
+    width: 100%;
+}
+
+/* 6. Phần User & Date */
+.vm-user-row {
+    display: flex;
+    justify-content: space-between; /* Đẩy Date sang phải */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.vm-user-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vm-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.vm-username {
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+}
+
+.vm-date {
+    color: #aaa; /* Màu xám nhạt */
+    font-size: 14px;
+}
+
+/* 7. Phần Stars & Content */
+.vm-rating-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.vm-label {
+    font-weight: 700;
+    font-size: 14px;
+    min-width: 160px; /* Cố định chiều rộng nhãn để sao thẳng hàng */
+    color: #333;
+}
+
+.vm-stars {
+    display: flex;
+    gap: 3px;
+}
+
+/* Sao vàng và sao xám */
+.vm-stars .star { font-size: 18px; color: #e0e0e0; }
+.vm-stars .star.active { color: #fbc02d; } /* Màu vàng */
+
+.vm-text-block {
+    margin-top: 10px;
+}
+
+.vm-text-block .vm-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.vm-text-block p {
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* 8. Footer nút OK */
+.view-modal-footer {
+    display: flex;
+    justify-content: flex-end; /* Nút OK nằm bên phải */
+    margin-top: 20px;
+}
+
+.btn-ok {
+    padding: 6px 30px; /* Nút OK rộng hơn chút */
+}
