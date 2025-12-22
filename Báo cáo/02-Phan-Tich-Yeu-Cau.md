@@ -44,82 +44,418 @@ Hệ thống Desora cung cấp nền tảng trung gian với các tính năng:
 
 Dựa trên User Stories đã phân tích, hệ thống có các yêu cầu chức năng chính:
 
-| ID    | Requirement                | Mô tả (Description)                                                                                    | User Stories liên quan |
-| ----- | -------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------- |
-| FR-01 | Request Management         | Quản lý yêu cầu thiết kế: Khách hàng gửi yêu cầu, Designer xem và báo giá, Admin theo dõi              | US-C01, US-C02, US-C03, US-D01, US-D02, US-A02 |
-| FR-02 | Catalog Management         | Quản lý danh mục Portfolio: Designer upload tác phẩm, Khách hàng xem và lọc, Admin duyệt nội dung     | US-C04, US-D03, US-A03 |
-| FR-03 | Communication              | Hệ thống giao tiếp: Chat, comment trên bản nháp, thông báo tự động                                    | US-C05, US-C06, US-D04, US-D05 |
-| FR-04 | Review & Rating            | Đánh giá và xếp hạng: Khách hàng đánh giá Designer sau khi hoàn thành dự án                           | US-C07, US-D06 |
-| FR-05 | User Profile Management    | Quản lý hồ sơ người dùng: Thông tin cá nhân, lịch sử giao dịch, thống kê                              | US-C08 |
-| FR-06 | Admin Interface            | Giao diện quản trị: Quản lý Designer, theo dõi yêu cầu, duyệt nội dung                                | US-A01, US-A02, US-A03 |
-| FR-07 | Promotion Management       | Quản lý khuyến mãi: Tạo và quản lý mã giảm giá, chương trình khuyến mãi                               | US-A04 |
-| FR-08 | Analytics & Reporting      | Phân tích và báo cáo: Thống kê yêu cầu, tỷ lệ chuyển đổi, hiệu suất Designer                          | US-A05 |
-| FR-09 | Payment Processing         | Xử lý thanh toán: Thanh toán khi báo giá được chấp nhận, hoàn tiền nếu cần                             | - |
-| FR-10 | Notification System        | Hệ thống thông báo: Email, in-app notification cho các sự kiện quan trọng                              | US-C05, US-A06 |
-| FR-11 | Automation                 | Tự động hóa: Gửi email tự động, cập nhật trạng thái, nhắc nhở                                         | US-A06 |
+| ID      | Requirement                | Mô tả (Description)                                                                                    | User Stories liên quan |
+| ------- | -------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------- |
+| **FR-01** | **Request Management**     | Quản lý yêu cầu thiết kế: Khách hàng gửi yêu cầu, Designer xem và báo giá, Admin theo dõi              | US-C01, US-C02, US-C03, US-D01, US-D02, US-A02 |
+| FR-01.1 | Create Design Request      | Khách hàng tạo yêu cầu thiết kế với thông tin chi tiết                                                 | US-C01, US-C02 |
+| FR-01.2 | View & Filter Requests     | Designer xem danh sách yêu cầu và lọc theo chuyên môn                                                  | US-D01 |
+| FR-01.3 | Create & Submit Quote      | Designer tạo và gửi báo giá cho yêu cầu                                                                 | US-D02 |
+| FR-01.4 | Track Request Status       | Khách hàng và Designer theo dõi trạng thái yêu cầu                                                    | US-C03, US-D05 |
+| FR-01.5 | Admin Request Monitoring   | Admin theo dõi và quản lý tất cả yêu cầu trong hệ thống                                                | US-A02 |
+| **FR-02** | **Catalog Management**     | Quản lý danh mục Portfolio: Designer upload tác phẩm, Khách hàng xem và lọc, Admin duyệt nội dung     | US-C04, US-D03, US-A03 |
+| FR-02.1 | Upload Portfolio           | Designer upload và quản lý Portfolio của mình                                                          | US-D03 |
+| FR-02.2 | Browse & Filter Portfolio  | Khách hàng xem và lọc Portfolio theo loại sản phẩm, phong cách                                          | US-C04 |
+| FR-02.3 | Search Portfolio           | Tìm kiếm Portfolio theo từ khóa                                                                        | US-C04 |
+| FR-02.4 | Approve Portfolio          | Admin duyệt Portfolio trước khi hiển thị công khai                                                      | US-A03 |
+| **FR-03** | **Communication** ⭐       | Hệ thống giao tiếp: Chat, comment trên bản nháp, thông báo tự động                                    | US-C05, US-C06, US-D04, US-D05 |
+| FR-03.1 | Upload Draft Design        | Designer upload bản nháp thiết kế                                                                      | US-D04 |
+| FR-03.2 | View Draft & Comment       | Khách hàng xem bản nháp và phản hồi trực tiếp                                                          | US-C06 |
+| FR-03.3 | Draft Version Management   | Lưu trữ và quản lý lịch sử các version bản nháp                                                       | US-D04 |
+| FR-03.4 | Real-time Notifications    | Thông báo tự động khi có bản nháp mới hoặc phản hồi mới                                                | US-C05, US-D04 |
+| **FR-04** | **Review & Rating**        | Đánh giá và xếp hạng: Khách hàng đánh giá Designer sau khi hoàn thành dự án                           | US-C07, US-D06 |
+| FR-04.1 | Submit Review              | Khách hàng đánh giá Designer (1-5 sao) và viết nhận xét                                                | US-C07 |
+| FR-04.2 | View Reviews & Statistics  | Designer xem tổng hợp đánh giá và thống kê                                                              | US-D06 |
+| **FR-05** | **User Profile Management**| Quản lý hồ sơ người dùng: Thông tin cá nhân, lịch sử giao dịch, thống kê                              | US-C08 |
+| FR-05.1 | Manage Personal Info       | Người dùng quản lý thông tin cá nhân                                                                   | US-C08 |
+| FR-05.2 | View History               | Xem lịch sử yêu cầu, dự án đã thực hiện                                                                | US-C08 |
+| FR-05.3 | View Statistics            | Xem thống kê cá nhân (số dự án, tỷ lệ thành công...)                                                   | US-C08 |
+| **FR-06** | **Admin Interface**        | Giao diện quản trị: Quản lý Designer, theo dõi yêu cầu, duyệt nội dung                                | US-A01, US-A02, US-A03 |
+| FR-06.1 | Manage Designers           | Quản lý danh sách Designer (thêm, sửa, xóa, khóa tài khoản)                                            | US-A01 |
+| FR-06.2 | Approve Content            | Duyệt Portfolio và nội dung khác                                                                       | US-A03 |
+| FR-06.3 | System Overview            | Theo dõi tổng quan hệ thống                                                                            | US-A02 |
+| **FR-07** | **Promotion Management**   | Quản lý khuyến mãi: Tạo và quản lý mã giảm giá, chương trình khuyến mãi                               | US-A04 |
+| FR-07.1 | Create Coupon Codes        | Tạo và quản lý mã khuyến mãi                                                                          | US-A04 |
+| FR-07.2 | Manage Promotions          | Thiết lập chương trình khuyến mãi theo thời gian                                                       | US-A04 |
+| FR-07.3 | Track Promotion Effectiveness | Theo dõi hiệu quả khuyến mãi                                                                        | US-A04 |
+| **FR-08** | **Analytics & Reporting**  | Phân tích và báo cáo: Thống kê yêu cầu, tỷ lệ chuyển đổi, hiệu suất Designer                          | US-A05 |
+| FR-08.1 | Request Statistics         | Thống kê số lượng yêu cầu mới                                                                          | US-A05 |
+| FR-08.2 | Conversion Analytics       | Tỷ lệ chuyển đổi (từ yêu cầu sang báo giá được chấp nhận)                                             | US-A05 |
+| FR-08.3 | Designer Performance       | Hiệu suất Designer                                                                                     | US-A05 |
+| FR-08.4 | Revenue Reports            | Báo cáo doanh thu                                                                                       | US-A05 |
+| **FR-09** | **Payment Processing**    | Xử lý thanh toán: Thanh toán khi báo giá được chấp nhận, hoàn tiền nếu cần                             | - |
+| FR-09.1 | Process Payment            | Thanh toán khi báo giá được chấp nhận                                                                   | - |
+| FR-09.2 | Escrow System             | Hệ thống giữ tiền để bảo vệ cả hai bên                                                                  | - |
+| FR-09.3 | Refund Processing          | Hoàn tiền nếu có tranh chấp                                                                            | - |
+| **FR-10** | **Notification System**    | Hệ thống thông báo: Email, in-app notification cho các sự kiện quan trọng                              | US-C05, US-A06 |
+| FR-10.1 | Email Notifications        | Gửi email notification cho các sự kiện quan trọng                                                      | US-C05, US-A06 |
+| FR-10.2 | In-app Notifications      | Hiển thị thông báo trong ứng dụng                                                                       | US-C05 |
+| FR-10.3 | Notification Settings      | Cài đặt tùy chọn thông báo                                                                              | US-C05 |
+| **FR-11** | **Automation**             | Tự động hóa: Gửi email tự động, cập nhật trạng thái, nhắc nhở                                         | US-A06 |
+| FR-11.1 | Automated Emails           | Gửi email tự động (chào mừng, nhắc nhở)                                                                | US-A06 |
+| FR-11.2 | Auto Status Update         | Tự động cập nhật trạng thái                                                                            | US-A06 |
+| FR-11.3 | Reminder System            | Tự động nhắc nhở khi quá hạn                                                                            | US-A06 |
 
 ### **Chi tiết các Functional Requirements:**
 
 #### **FR-01: Request Management**
-* Khách hàng có thể tạo yêu cầu thiết kế với thông tin chi tiết (tiêu đề, mô tả, ngân sách, deadline, file tham khảo)
-* Designer có thể xem danh sách yêu cầu và lọc theo chuyên môn
-* Designer có thể tạo và gửi báo giá cho yêu cầu
-* Khách hàng có thể xem trạng thái yêu cầu (Chờ Báo giá, Đang Thiết kế, Chờ Phản hồi, Đã Hoàn thành)
-* Admin có thể theo dõi tất cả yêu cầu trong hệ thống
+
+**FR-01.1: Create Design Request**
+* Khách hàng có thể tạo yêu cầu thiết kế với thông tin chi tiết:
+  - Tiêu đề yêu cầu (required, 5-100 ký tự)
+  - Mô tả chi tiết (required, tối thiểu 50 ký tự, hỗ trợ rich text)
+  - Loại thiết kế (Logo, Banner, Website, Packaging...)
+  - Ngân sách dự kiến (required, tối thiểu 100,000 VND)
+  - Deadline (required, tối thiểu 3 ngày từ hôm nay)
+  - Upload file tham khảo (optional, tối đa 10 files, 50MB/file)
+* Validation form real-time
+* Preview trước khi submit
+
+**FR-01.2: View & Filter Requests**
+* Designer có thể xem danh sách yêu cầu:
+  - Tất cả yêu cầu mới
+  - Yêu cầu đã báo giá
+  - Yêu cầu đang thực hiện
+* Lọc theo:
+  - Chuyên môn/Category
+  - Ngân sách (min-max)
+  - Deadline
+  - Trạng thái
+* Sort theo: Mới nhất, Deadline, Ngân sách
+
+**FR-01.3: Create & Submit Quote**
+* Designer có thể tạo báo giá:
+  - Giá đề xuất (required)
+  - Số ngày dự kiến hoàn thành (required)
+  - Mô tả báo giá (optional)
+  - Terms & conditions (optional)
+* Preview báo giá trước khi gửi
+* Gửi báo giá cho khách hàng
+* Khách hàng có thể chấp nhận/từ chối báo giá
+
+**FR-01.4: Track Request Status**
+* Trạng thái yêu cầu:
+  - `pending_quote` - Chờ báo giá
+  - `quote_sent` - Đã gửi báo giá
+  - `quote_accepted` - Báo giá được chấp nhận
+  - `in_progress` - Đang thiết kế
+  - `waiting_feedback` - Chờ phản hồi
+  - `approved` - Đã duyệt
+  - `completed` - Đã hoàn thành
+  - `cancelled` - Đã hủy
+* Timeline hiển thị lịch sử thay đổi trạng thái
+* Thông báo khi trạng thái thay đổi
+
+**FR-01.5: Admin Request Monitoring**
+* Admin dashboard hiển thị:
+  - Tổng số yêu cầu
+  - Yêu cầu theo trạng thái
+  - Yêu cầu mới trong 24h/7 ngày/30 ngày
+* Filter và search yêu cầu
+* Xem chi tiết từng yêu cầu
+* Có thể can thiệp nếu cần (hủy, chuyển Designer...)
+
+---
 
 #### **FR-02: Catalog Management**
-* Designer có thể upload và quản lý Portfolio của mình
-* Khách hàng có thể xem và lọc Portfolio theo loại sản phẩm, phong cách
-* Admin có thể duyệt Portfolio trước khi hiển thị công khai
-* Hỗ trợ tìm kiếm Portfolio theo từ khóa
+
+**FR-02.1: Upload Portfolio**
+* Designer có thể:
+  - Upload hình ảnh Portfolio (JPG, PNG, tối đa 50MB)
+  - Thêm tiêu đề, mô tả
+  - Chọn category và tags
+  - Thêm thông tin dự án (nếu có)
+* Quản lý Portfolio:
+  - Edit, Delete
+  - Sắp xếp thứ tự hiển thị
+  - Set featured portfolio
+
+**FR-02.2: Browse & Filter Portfolio**
+* Khách hàng có thể:
+  - Xem grid layout của Portfolio
+  - Lọc theo:
+    * Category (Logo, Banner, Website...)
+    * Style (Minimalist, Modern, Vintage...)
+    * Designer
+    * Rating
+  - Sort theo: Mới nhất, Phổ biến, Rating cao nhất
+
+**FR-02.3: Search Portfolio**
+* Tìm kiếm Portfolio theo:
+  - Từ khóa (title, description, tags)
+  - Designer name
+  - Category
+* Autocomplete suggestions
+* Highlight kết quả tìm kiếm
+
+**FR-02.4: Approve Portfolio**
+* Admin có thể:
+  - Xem danh sách Portfolio chờ duyệt
+  - Preview Portfolio
+  - Approve hoặc Reject với lý do
+  - Bulk approve/reject
+
+---
 
 #### **FR-03: Communication** ⭐ (Phân tích chi tiết trong Chương 3)
-* Designer có thể upload bản nháp thiết kế
-* Khách hàng có thể xem bản nháp và phản hồi trực tiếp
-* Hệ thống hỗ trợ comment trên bản nháp
-* Thông báo tự động khi có bản nháp mới hoặc phản hồi mới
-* Lưu trữ lịch sử tất cả các version bản nháp
+
+**FR-03.1: Upload Draft Design**
+* Designer có thể:
+  - Upload file bản nháp (JPG, PNG, PDF, PSD, AI)
+  - Thêm mô tả cho bản nháp (optional)
+  - Version tự động tăng (v1.0, v2.0...)
+* Validation file (format, size)
+* Preview trước khi upload
+* Progress bar khi uploading
+
+**FR-03.2: View Draft & Comment**
+* Khách hàng có thể:
+  - Xem bản nháp với image viewer (zoom, pan)
+  - Comment trực tiếp trên bản nháp
+  - Attach file reference
+  - Markup tools (draw, highlight)
+  - Approve hoặc Request changes
+
+**FR-03.3: Draft Version Management**
+* Lưu trữ tất cả các version:
+  - Version number
+  - Upload date
+  - File info (name, size, type)
+  - Status (Pending, Approved, Rejected)
+* Timeline view các version
+* Compare versions
+* Download version cũ
+
+**FR-03.4: Real-time Notifications**
+* Thông báo khi:
+  - Designer upload bản nháp mới
+  - Khách hàng comment/phản hồi
+  - Bản nháp được approve/reject
+* Email + In-app notification
+* Notification center với unread count
+
+---
 
 #### **FR-04: Review & Rating**
-* Khách hàng có thể đánh giá Designer sau khi hoàn thành dự án (1-5 sao)
-* Khách hàng có thể viết nhận xét chi tiết
-* Designer có thể xem tổng hợp đánh giá và thống kê
+
+**FR-04.1: Submit Review**
+* Khách hàng có thể:
+  - Đánh giá Designer (1-5 sao)
+  - Viết nhận xét chi tiết (optional)
+  - Upload hình ảnh sản phẩm cuối cùng (optional)
+* Chỉ có thể review sau khi dự án hoàn thành
+* Một dự án chỉ review một lần
+* Có thể edit review trong 7 ngày
+
+**FR-04.2: View Reviews & Statistics**
+* Designer có thể xem:
+  - Tổng hợp đánh giá (trung bình sao)
+  - Danh sách tất cả reviews
+  - Thống kê:
+    * Số lượng reviews
+    * Phân bố điểm (1-5 sao)
+    * Reviews theo thời gian
+* Filter reviews theo rating, thời gian
+
+---
 
 #### **FR-05: User Profile Management**
-* Người dùng có thể quản lý thông tin cá nhân
-* Xem lịch sử yêu cầu, dự án đã thực hiện
-* Thống kê cá nhân (số dự án, tỷ lệ thành công...)
+
+**FR-05.1: Manage Personal Info**
+* Người dùng có thể:
+  - Cập nhật thông tin cá nhân (tên, email, phone, avatar)
+  - Đổi mật khẩu
+  - Cài đặt privacy
+  - Xác thực email/phone
+
+**FR-05.2: View History**
+* Xem lịch sử:
+  - Yêu cầu đã tạo (Customer)
+  - Dự án đã thực hiện (Designer)
+  - Giao dịch thanh toán
+  - Portfolio đã upload (Designer)
+
+**FR-05.3: View Statistics**
+* Thống kê cá nhân:
+  - Số dự án đã hoàn thành
+  - Tỷ lệ thành công
+  - Tổng doanh thu (Designer)
+  - Average rating (Designer)
+  - Charts và graphs
+
+---
 
 #### **FR-06: Admin Interface**
-* Quản lý danh sách Designer (thêm, sửa, xóa, khóa tài khoản)
-* Duyệt Portfolio và nội dung
-* Theo dõi tổng quan hệ thống
+
+**FR-06.1: Manage Designers**
+* Admin có thể:
+  - Xem danh sách tất cả Designer
+  - Thêm Designer mới (manual)
+  - Edit thông tin Designer
+  - Khóa/Mở khóa tài khoản
+  - Xóa Designer (soft delete)
+  - Xem thống kê Designer
+
+**FR-06.2: Approve Content**
+* Duyệt:
+  - Portfolio mới
+  - Nội dung khác (nếu có)
+* Bulk operations
+* Reject với lý do
+
+**FR-06.3: System Overview**
+* Dashboard hiển thị:
+  - Tổng số users (Customer, Designer)
+  - Tổng số requests
+  - Revenue (nếu có)
+  - Active projects
+  - System health
+
+---
 
 #### **FR-07: Promotion Management**
-* Tạo và quản lý mã khuyến mãi
-* Thiết lập chương trình khuyến mãi theo thời gian
-* Theo dõi hiệu quả khuyến mãi
+
+**FR-07.1: Create Coupon Codes**
+* Tạo mã khuyến mãi:
+  - Code (unique)
+  - Discount type (% hoặc fixed amount)
+  - Discount value
+  - Minimum order value
+  - Usage limit (per user, total)
+  - Valid from/to dates
+
+**FR-07.2: Manage Promotions**
+* Thiết lập chương trình:
+  - Flash sale
+  - Seasonal promotions
+  - New user discount
+* Schedule promotions
+* Auto enable/disable
+
+**FR-07.3: Track Promotion Effectiveness**
+* Thống kê:
+  - Số lần sử dụng
+  - Tổng discount đã áp dụng
+  - Conversion rate
+  - Revenue từ promotion
+
+---
 
 #### **FR-08: Analytics & Reporting**
-* Thống kê số lượng yêu cầu mới
-* Tỷ lệ chuyển đổi (từ yêu cầu sang báo giá được chấp nhận)
-* Hiệu suất Designer
-* Báo cáo doanh thu
+
+**FR-08.1: Request Statistics**
+* Thống kê:
+  - Số lượng yêu cầu mới (daily, weekly, monthly)
+  - Requests theo category
+  - Requests theo status
+  - Trends và charts
+
+**FR-08.2: Conversion Analytics**
+* Tỷ lệ chuyển đổi:
+  - Request → Quote sent
+  - Quote sent → Quote accepted
+  - Quote accepted → Completed
+  - Funnel visualization
+
+**FR-08.3: Designer Performance**
+* Metrics:
+  - Số dự án hoàn thành
+  - Average rating
+  - Response time
+  - Completion rate
+  - Revenue
+
+**FR-08.4: Revenue Reports**
+* Báo cáo:
+  - Total revenue
+  - Revenue theo thời gian
+  - Revenue theo Designer
+  - Commission (nếu có)
+  - Export reports (PDF, Excel)
+
+---
 
 #### **FR-09: Payment Processing**
-* Thanh toán khi báo giá được chấp nhận
-* Hệ thống escrow (giữ tiền) để bảo vệ cả hai bên
-* Hoàn tiền nếu có tranh chấp
+
+**FR-09.1: Process Payment**
+* Thanh toán khi:
+  - Báo giá được chấp nhận
+  - Hoặc theo milestone
+* Payment methods:
+  - Credit/Debit card
+  - Bank transfer
+  - E-wallet (nếu có)
+* Payment confirmation
+* Receipt generation
+
+**FR-09.2: Escrow System**
+* Giữ tiền trong escrow:
+  - Khách hàng thanh toán → tiền giữ trong escrow
+  - Designer hoàn thành → tiền chuyển cho Designer
+  - Bảo vệ cả hai bên
+* Escrow balance tracking
+
+**FR-09.3: Refund Processing**
+* Hoàn tiền khi:
+  - Tranh chấp (Admin quyết định)
+  - Dự án bị hủy
+  - Designer không hoàn thành
+* Refund workflow
+* Refund history
+
+---
 
 #### **FR-10: Notification System**
-* Email notification cho các sự kiện quan trọng
-* In-app notification
-* Cài đặt tùy chọn thông báo
+
+**FR-10.1: Email Notifications**
+* Gửi email cho:
+  - Yêu cầu mới
+  - Báo giá mới
+  - Bản nháp mới
+  - Phản hồi mới
+  - Dự án hoàn thành
+  - Payment updates
+* Email templates
+* HTML email với branding
+
+**FR-10.2: In-app Notifications**
+* Notification center:
+  - Danh sách notifications
+  - Mark as read/unread
+  - Filter notifications
+  - Real-time updates (WebSocket)
+* Badge count
+* Toast notifications
+
+**FR-10.3: Notification Settings**
+* User có thể:
+  - Bật/tắt từng loại notification
+  - Chọn email hoặc in-app
+  - Set quiet hours
+  - Unsubscribe
+
+---
 
 #### **FR-11: Automation**
-* Gửi email tự động (chào mừng, nhắc nhở)
-* Tự động cập nhật trạng thái
-* Tự động nhắc nhở khi quá hạn
+
+**FR-11.1: Automated Emails**
+* Tự động gửi email:
+  - Welcome email khi đăng ký
+  - Email nhắc nhở (deadline, feedback)
+  - Weekly digest
+  - Birthday wishes (optional)
+
+**FR-11.2: Auto Status Update**
+* Tự động cập nhật:
+  - Status khi deadline đến
+  - Status khi không có phản hồi sau X ngày
+  - Auto-complete sau khi approve
+
+**FR-11.3: Reminder System**
+* Tự động nhắc nhở:
+  - Designer: deadline sắp đến
+  - Customer: cần phản hồi bản nháp
+  - Admin: có nội dung cần duyệt
+* Escalation (nếu không phản hồi)
 
 ---
 

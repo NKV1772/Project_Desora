@@ -33,34 +33,10 @@
 // }
 
 // export default App
-// import Home from "./pages/Home";
-
-// function App() {
-//   return <Home />;
-// }
-
-// export default App;
-
-// src/App.jsx
-import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Reviews from "./pages/Reviews";
-import Layout from './components/Layout';
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      
-      
-      <Route path="/reviews" element={<Layout><Reviews /></Layout>} />
-
-      {/* Các trang khác tạm thời chưa có nội dung thì trỏ tạm về Home hoặc tạo component mới */}
-      {/* <Route path="/request-form" element={<Layout><h2>Trang Form Yêu Cầu</h2></Layout>} /> */}
-      {/* <Route path="/my-orders" element={<Layout><h2>Trang Đơn Hàng</h2></Layout>} /> */}
-      {/* ... */}
-    </Routes>
-  );
+  return <Home />;
 }
 
 export default App;
