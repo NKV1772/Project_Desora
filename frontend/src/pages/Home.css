@@ -1,0 +1,104 @@
+.home-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 1260px;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: linear-gradient(180deg, #ffffff 0%, #fdf6ff 100%);
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  background-color: #f3dbff;
+}
+.brand {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+
+.home-main {
+  flex: 1;
+  display: flex;
+  gap: 150px;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.hero {
+  max-width: 520px;
+  color: #000000;
+}
+.hero h1 {
+  font-size: 60px;
+  margin: 0 0 12px 0;
+}
+.hero p {
+  font-size: 20px;
+  margin: 0 0 12px 0;
+}
+
+.card {
+  width: 450px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(30, 30, 60, 0.06);
+}
+.card h2 {
+  font-size: 24px;
+  margin: 0 0 12px 0;
+  color: #000000;
+}
+.card label {
+  font-size: 20px;
+  color: #000000;
+}
+.card input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 8px 0 30px 0;
+  border-radius: 10px;
+  border: 1px solid #d5d2d2;
+}
+
+button.primary {
+  width: 100%;
+  background: #000000;
+  color: white;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+button.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* .divider {
+  text-align: center;
+  color: #999;
+  margin: 14px 0;
+} */
+
+/* button.google {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+} */
+
+.btn-ghost {
+  background-color: #000000;
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
