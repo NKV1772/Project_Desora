@@ -10,7 +10,7 @@ const Sidebar = () => {
   const menuItems = [
     // Thêm thuộc tính 'path' cho mỗi mục
     { id: 1, label: 'Trang chủ', icon: <FaHome size={20} />, path: '/' },
-    { id: 2, label: 'Form yêu cầu', icon: <BiMessageSquareDetail size={20} />, path: '/request-form' },
+    { id: 2, label: 'Tạo yêu cầu', icon: <BiMessageSquareDetail size={20} />, path: '/request-form' },
     { id: 3, label: 'Danh sách yêu cầu', icon: <FaRegFileAlt size={20} />, path: '/request-list' },
     { id: 4, label: 'Đơn hàng của tôi', icon: <FaShoppingCart size={20} />, path: '/my-orders' },
     { id: 5, label: 'Xem đánh giá', icon: <FaStar size={20} />, path: '/reviews' },
