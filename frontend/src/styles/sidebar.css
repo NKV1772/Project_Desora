@@ -1,0 +1,47 @@
+.sidebar {
+  width: 260px;          /* Chiều rộng cố định của sidebar */
+  background-color: #fff; /* Nền trắng */
+  height: 100%;          /* Cao hết phần cha */
+  padding: 24px 16px;    /* Khoảng cách lề trong */
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Khoảng cách giữa các nút */
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;             /* Khoảng cách giữa icon và chữ */
+  padding: 14px 20px;    /* Độ dày của nút */
+  border-radius: 8px;    /* Bo góc nhẹ */
+  color: #757575;        /* Màu chữ xám nhạt mặc định */
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+/* Hiệu ứng khi di chuột vào mục chưa chọn */
+.menu-item:hover:not(.active) {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* --- Style cho mục ĐANG CHỌN (Active) --- */
+.menu-item.active {
+  background-color: #6a35c9; /* Màu tím đậm giống hình (#6a35c9 hoặc #5e35b1) */
+  color: #ffffff;            /* Chữ trắng */
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(106, 53, 201, 0.25); /* Đổ bóng tím nhẹ */
+}
+
+/* Icon bên trong mục active */
+.menu-item.active .menu-icon {
+  color: #fff;
+}
