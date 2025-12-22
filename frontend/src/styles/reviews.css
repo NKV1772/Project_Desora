@@ -1,0 +1,130 @@
+/* Reset cơ bản */
+* {
+  box-sizing: border-box;
+}
+
+/* Container chính của trang Reviews - Tạo màu nền tím nhạt */
+.reviews-page {
+  background-color: #F8F0FC; /* Màu nền tím rất nhạt giống hình */
+  /* min-height: 100vh; */
+  max-width: 1200px;
+  padding: 30px 40px;
+  font-family: 'Inter', sans-serif; /* Hoặc font bạn đang dùng */
+  color: #333;
+}
+
+/* Tiêu đề */
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #1a1a1a;
+}
+
+/* --- Filter Section --- */
+.review-filter {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  border-radius: 25px; /* Bo tròn kiểu viên thuốc */
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #fff; /* Nền trắng cho nút thường */
+  color: #555;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.filter-btn.active {
+  background-color: #7b2cbf; /* Màu tím đậm thương hiệu */
+  color: white;
+  box-shadow: 0 4px 10px rgba(123, 44, 191, 0.3);
+}
+
+.filter-btn:hover:not(.active) {
+  background-color: #f0f0f0;
+}
+
+/* --- Review Item Card --- */
+.review-item {
+  background: white;
+  padding: 20px;
+  border-radius: 16px; /* Bo góc thẻ */
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: space-between;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02); /* Đổ bóng rất nhẹ */
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.product-image {
+  width: 85px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+
+.order-info, .order-date {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* --- Buttons --- */
+.btn-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+/* Nút Viết đánh giá (Màu tím) */
+.btn-primary {
+  background: #d52cbf; /* Màu tím hồng giống nút trong hình */
+  background: linear-gradient(90deg, #aa2cbf 0%, #d52cbf 100%); /* Gradient nhẹ cho đẹp */
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Nút Xem đánh giá (Outline) */
+.btn-outline {
+  background: transparent;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.btn-outline:hover {
+  border-color: #aaa;
+  background-color: #f9f9f9;
+}
