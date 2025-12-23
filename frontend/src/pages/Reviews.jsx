@@ -40,7 +40,7 @@ const Reviews = () => {
     setViewingReview(null);
   };
 
-  // --- THÊM HÀM XỬ LÝ CHUYỂN ĐỔI ---
+  // --- THÊM HÀM XỬ LÝ CHUYỂN ĐỔI BUTTON "CHỈNH SỬA" ---
   const handleEditReview = () => {
     // 1. Đóng Modal Xem
     setIsViewModalOpen(false);
@@ -88,23 +88,47 @@ const Reviews = () => {
     },
   ];
 
+   // --- LỌC SẢN PHẨM ---
+  const filteredProducts = reviewsData.filter((product) => {
+    if (filter === 'not-reviewed') {
+      return product.isReviewed === false; // Chỉ lấy cái CHƯA đánh giá
+    }
+    if (filter === 'reviewed') {
+      return product.isReviewed === true;  // Chỉ lấy cái ĐÃ đánh giá
+    }
+    if (filter === "desora") {
+      return product.isReviewed === true && product.replyText;
+    }
+    return true; // 'all' -> Lấy tất cả
+  });
+
+
   return (
     <div className="reviews-page">
       <h2 className="page-title">Đánh giá sản phẩm</h2>
       
+      {/* Truyền state và hàm setFilter xuống cho con */}
       <ReviewFilter 
         currentFilter={filter} 
         onFilterChange={setFilter} 
       />
 
       <div className="reviews-list">
-        {reviewsData.map((product) => (
+        {filteredProducts.map((product) => (
           <ReviewItem key={product.id} 
           product={product} 
           onOpenModal={handleOpenModal}
           onOpenViewModal={handleOpenViewModal}/>
         ))}
       </div>
+
+        {/* Thông báo nếu không có sản phẩm nào khớp */}
+          {filteredProducts.length === 0 && (
+            <p style={{textAlign: 'center', marginTop: '20px', color: '#777'}}>
+              Chưa có thông tin đánh giá nào.
+            </p>
+          )}
+
 
       {/*  */}
       <WriteReviewModal 
