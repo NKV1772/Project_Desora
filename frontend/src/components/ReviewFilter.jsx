@@ -2,7 +2,7 @@ import React from 'react';
 
 const filters = [
   { id: 'all', label: 'Tất cả đánh giá' },
-  { id: 'pending', label: 'Chưa đánh giá' },
+  { id: 'not-reviewed', label: 'Chưa đánh giá' },
   { id: 'reviewed', label: 'Đã đánh giá' },
   { id: 'desora', label: 'Đánh giá từ Desora' },
 ];
