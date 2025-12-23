@@ -107,7 +107,7 @@ const Reviews = () => {
     <div className="reviews-page">
       <h2 className="page-title">Đánh giá sản phẩm</h2>
       
-      {/* Truyền state và hàm setFilter xuống cho con */}
+      {/* update hàm setFilter*/}
       <ReviewFilter 
         currentFilter={filter} 
         onFilterChange={setFilter} 
