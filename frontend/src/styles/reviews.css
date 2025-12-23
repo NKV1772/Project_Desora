@@ -225,11 +225,7 @@ button:focus {
 }
 
 .modal-prod-price { 
-    font-weight: 600; 
     font-size: 15px; 
-}
-
-.modal-prod-price span { 
     color: #d32f2f; 
     margin-left: 5px; 
     font-weight: 700; 
