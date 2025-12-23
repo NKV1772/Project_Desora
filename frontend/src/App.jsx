@@ -50,7 +50,7 @@ import Layout from './components/Layout';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/request-form" element={<Home />} />
       
       
       <Route path="/reviews" element={<Layout><Reviews /></Layout>} />
