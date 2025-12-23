@@ -2,16 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaStar, FaTimes } from 'react-icons/fa';
 
 const WriteReviewModal = ({ isOpen, onClose, product }) => {
-//   // Reset lại form mỗi khi mở modal
-//   useEffect(() => {
-//     if (isOpen) {
-//       setRating(0);
-//       setRatingDesigner(0);
-//       setRatingConsultant(0);
-//       setReviewText("");
-//     }
-//   }, [isOpen]);
-
+// Reset lại form mỗi khi mở modal
   useEffect(() => {
     if (isOpen && product) {
       // KIỂM TRA: Nếu sản phẩm này ĐÃ được đánh giá (tức là đang Chỉnh sửa)
@@ -64,6 +55,13 @@ const WriteReviewModal = ({ isOpen, onClose, product }) => {
     onClose();
   };
 
+    // Hàm hỗ trợ format tiền tệ (thêm vào trước lệnh return)
+    const formatCurrency = (value) => {
+      if (!value) return '0';
+      // Chuyển về dạng số rồi format
+      return Number(value.toString().replace(/\./g, '')).toLocaleString('vi-VN');
+    };
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-container" onClick={(e) => e.stopPropagation()}>
@@ -82,7 +80,7 @@ const WriteReviewModal = ({ isOpen, onClose, product }) => {
               <p>Đơn hàng #{product?.orderId}</p>
             </div>
           </div>
-          <div className="modal-prod-price">Thành tiền: <span>150.000đ</span></div>
+          <div className="modal-prod-price">Thành tiền: <span>{formatCurrency(product?.price)}</span><sup>đ</sup></div>
         </div>
 
         {/* Khối Form đánh giá */}
