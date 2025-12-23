@@ -60,6 +60,7 @@ const Reviews = () => {
       date: '20/11, 2025',
       image: '/Poster.png',
       isReviewed: false, // Chưa đánh giá -> Hiện nút Tím
+      price: 145000
     },
     {
       id: 2,
@@ -69,6 +70,7 @@ const Reviews = () => {
       image: '/MerryChristmas.png',
       isReviewed: true, // Đã đánh giá -> Hiện nút Trắng
       // Thêm dữ liệu giả để khi Xem đánh giá có cái mà hiện
+      price: 150000,
       rating: 4,
       ratingConsultant: 5,
       reviewText: "File bàn giao đầy đủ, đúng deadline. Chỉ mong lần sau có thêm gợi ý về màu sắc. ",
@@ -82,6 +84,7 @@ const Reviews = () => {
       date: '13/10, 2025',
       image: '/poster_am_thuc.jpg',
       isReviewed: false,
+      price: 155000
     },
   ];
 
