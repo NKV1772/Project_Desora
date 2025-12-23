@@ -536,3 +536,99 @@ button:focus {
 .btn-ok {
     padding: 6px 30px; /* Nút OK rộng hơn chút */
 }
+
+/* --- CSS XÁC NHẬN GỬI ĐÁNH GIÁ --- */
+
+/* 1. Lớp phủ đen mờ */
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; 
+}
+
+/* 2. Cái hộp trắng nhỏ */
+.confirm-box {
+    background: #fff;
+    width: 400px;
+    max-width: 90%;
+    padding: 25px 30px;
+    border-radius: 20px; /* Bo góc tròn trịa */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: left;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* 3. Tiêu đề "Gửi đánh giá ?" */
+.confirm-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+/* 4. Nội dung text */
+.confirm-body p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+.confirm-body p:last-child {
+    margin-bottom: 25px; 
+}
+
+/* 5. nút bấm */
+.confirm-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Nút Trở lại */
+.btn-text-only {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 15px;
+}
+.btn-text-only:hover {
+    color: #333;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+/* Nút Gửi đánh giá  */
+.btn-confirm-submit {
+    background-color: #fff;
+    border: 1px solid #ffcccc; 
+    color: #ff5252;            
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-confirm-submit:hover {
+    background-color: #ff5252;
+    color: #fff;
+}
+
+/* Animation nhẹ cho popup hiện ra */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
