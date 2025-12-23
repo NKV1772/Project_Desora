@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { FaStar, FaTimes } from 'react-icons/fa';
+import ConfirmSubmitModal from './ConfirmSubmitModal';
 
 const WriteReviewModal = ({ isOpen, onClose, product }) => {
+
+  // 1. Khai báo các biến lưu trữ dữ liệu
+  const [rating, setRating] = useState(0);             // Sao chất lượng sản phẩm
+  const [ratingDesigner, setRatingDesigner] = useState(0); // Sao dịch vụ 1
+  const [ratingConsultant, setRatingConsultant] = useState(0); // Sao dịch vụ 2
+  const [reviewText, setReviewText] = useState("");    // Nội dung text
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
 // Reset lại form mỗi khi mở modal
   useEffect(() => {
     if (isOpen && product) {
@@ -22,11 +31,7 @@ const WriteReviewModal = ({ isOpen, onClose, product }) => {
     }
   }, [isOpen, product]);
 
-  // 1. Khai báo các biến lưu trữ dữ liệu
-  const [rating, setRating] = useState(0);             // Sao chất lượng sản phẩm
-  const [ratingDesigner, setRatingDesigner] = useState(0); // Sao dịch vụ 1
-  const [ratingConsultant, setRatingConsultant] = useState(0); // Sao dịch vụ 2
-  const [reviewText, setReviewText] = useState("");    // Nội dung text
+  
 
   if (!isOpen) return null;
 
@@ -42,25 +47,54 @@ const WriteReviewModal = ({ isOpen, onClose, product }) => {
     }
   };
 
-  // Hàm gửi đánh giá
-  const handleSubmit = () => {
-    // Kiểm tra: báo lỗi khi không điền sao, nhập nội dung
-    if (rating === 0 && reviewText.trim() === "") {
-      alert("Vui lòng chấm điểm sao hoặc viết nội dung đánh giá trước khi gửi!");
-      return;
-    }
-
-    // Đánh giá sao hoặc viết nội dung
-    alert("Đánh giá của bạn đã được ghi nhận.");
-    onClose();
-  };
-
     // Hàm hỗ trợ format tiền tệ (thêm vào trước lệnh return)
     const formatCurrency = (value) => {
       if (!value) return '0';
       // Chuyển về dạng số rồi format
       return Number(value.toString().replace(/\./g, '')).toLocaleString('vi-VN');
     };
+
+// Hàm xử lý "Gửi đánh giá"
+  const handlePreSubmit = () => {
+// Kiểm tra các trường nhập liệu
+    const isRatingEmpty = rating === 0;
+    const isServiceEmpty = ratingDesigner === 0 && ratingConsultant === 0;
+    const isTextEmpty = reviewText.trim() === "";
+
+    // Không có trường nào được nhập => báo lỗi
+    if (isRatingEmpty && isServiceEmpty && isTextEmpty) {
+      alert("Vui lòng chấm điểm sao hoặc viết nội dung đánh giá trước khi gửi!");
+      return;
+    }
+// Đã đánh giá trước đó
+    if (product.isReviewed) {
+        setIsConfirmOpen(true); //Hàm gửi đánh giá bên chỉnh sửa
+    } else {
+        alert("Đã ghi nhận đánh giá thành công!"); 
+        handleFinalSubmit();
+    }
+  };
+
+  // Hàm Lưu cuối cùng
+  const handleFinalSubmit = () => {
+    // Log dữ liệu
+    console.log("Submit Review:", {
+        id: product.id,
+        rating,
+        ratingDesigner,
+        ratingConsultant,
+        reviewText
+    });
+    
+    // Thông báo update thành công
+    if (product.isReviewed) {
+        alert("Nội dung đánh giá đã được cập nhật!");
+    }
+
+    setIsConfirmOpen(false); // Đóng popup con
+    onClose();               // Đóng modal to
+  };
+
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -157,10 +191,17 @@ const WriteReviewModal = ({ isOpen, onClose, product }) => {
           </div>
 
           <div className="modal-footer-area">
-            <button className="submit-review-btn" onClick={handleSubmit}>
+            <button className="submit-review-btn" onClick={handlePreSubmit}>
               Gửi đánh giá
             </button>
           </div>
+
+          {/* --- Xác nhận gửi đánh giá --- */}
+          <ConfirmSubmitModal 
+            isOpen={isConfirmOpen}
+            onClose={() => setIsConfirmOpen(false)} 
+            onConfirm={handleFinalSubmit}           
+          />
 
         </div>
       </div>
