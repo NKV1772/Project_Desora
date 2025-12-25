@@ -68,7 +68,7 @@ const WriteReviewModal = ({ isOpen, onClose, product }) => {
     }
 // Đã đánh giá trước đó
     if (product.isReviewed) {
-        setIsConfirmOpen(true); //Hàm gửi đánh giá bên chỉnh sửa
+        setIsConfirmOpen(true); //nút xác nhận
     } else {
         alert("Đã ghi nhận đánh giá thành công!"); 
         handleFinalSubmit();
